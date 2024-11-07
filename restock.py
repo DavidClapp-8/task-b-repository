@@ -23,5 +23,7 @@ The function will also update the inventory_records (For restocking) for a  give
     if current_day % 7 == 0 or current_day == 0:
         #inventory_records.append() * available_items
         print(f"{inventory_records} + {current_day}")
+        difference = 2000 - available_items
+        available_items = available_items + difference
 
     return available_items
