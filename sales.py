@@ -19,5 +19,11 @@ available_items:(integer) This function returns this integer which updates the a
 The function will also update the inventory_records (For restocking) for a  given current day. 
 
     '''
-    
+    if current_day % 7 != 0:
+        sold_today = random.randint(1,200)
+        print("Non-restock day")
+        print(f"{sold_today} were sold today")
+        available_items = available_items - sold_today
+        print(f"{available_items} are available")
+
     return available_items
