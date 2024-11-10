@@ -17,13 +17,23 @@ available_items:(integer) This function returns this integer which updates the a
 
 The function will also update the inventory_records (For restocking) for a  given current day. It will also return "available_items".
     '''
-    #(len(inventory_records) == 0)
+    #Updates index 0 of the current day
+    inventory_records.insert(0,current_day)
 
     #If statemen tto check if a restock is needed
-    if current_day % 7 == 0 or current_day == 0:
-        #inventory_records.append() * available_items
-        print(f"{inventory_records} + {current_day}")
+    if current_day % 7 == 0:
+        #Difference between 2000 and items left
         difference = 2000 - available_items
+        if difference == 0:
+            difference = 2000
+
+        #Restocks up to 2000
         available_items = available_items + difference
+        #Updates the items restocked that day
+        inventory_records.insert(2, difference)
+        #Updates the items available for that day
+    else:
+        inventory_records.insert(2, 0)
+
 
     return available_items
