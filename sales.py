@@ -26,4 +26,17 @@ The function will also update the inventory_records (For restocking) for a  give
         available_items = available_items - sold_today
         print(f"{available_items} are available")
 
+
+
+
+        inventory_records.insert(1, sold_today)
+        
+        inventory_records.insert(3, available_items)
+
+    else:
+        inventory_records.insert(1, 0)
+
+
+
+    print(inventory_records, "The list")
     return available_items
