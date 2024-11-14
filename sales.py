@@ -35,8 +35,8 @@ The function will also update the inventory_records (For restocking) for a  give
 
     else:
         inventory_records.insert(1, 0)
-
-
-
+    report_header = [("Day", "Sold Units", "Restocked Units", "Available Units")]
+    inventory_records = [(1,23,13,1000)]
+    inventory_records = inventory_records + report_header
     print(inventory_records, "The list")
     return available_items
