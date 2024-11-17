@@ -17,23 +17,20 @@ available_items:(integer) This function returns this integer which updates the a
 
 The function will also update the inventory_records (For restocking) for a  given current day. It will also return "available_items".
     '''
-    #Updates index 0 of the current day
-    inventory_records.insert(0,current_day)
+    #inventory_records.clear()
 
     #If statemen tto check if a restock is needed
     if current_day % 7 == 0:
-        #Difference between 2000 and items left
-        difference = 2000 - available_items
-        if difference == 0:
-            difference = 2000
+        #restock_amount between 2000 and items left
+        restock_amount = 2000 - available_items
+        if restock_amount == 0:
+            restock_amount = 2000
 
-        #Restocks up to 2000
-        available_items = available_items + difference
-        #Updates the items restocked that day
-        inventory_records.insert(2, difference)
-        #Updates the items available for that day
+        #Restock amount
+        available_items = restock_amount
     else:
-        inventory_records.insert(2, 0)
+        restock_amount = 0
+        available_items = restock_amount
 
 
     return available_items
