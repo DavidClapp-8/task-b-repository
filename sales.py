@@ -19,30 +19,34 @@ available_items:(integer) This function returns this integer which updates the a
 The function will also update the inventory_records (For restocking) for a  given current day. 
 
     '''
-    flag = False
     if current_day % 7 != 0:
         sold_today = random.randint(1,200)
-        print("Non-restock day")
-        print(f"{sold_today} were sold today")
-        available_items = 2000 - sold_today
-        sold_today_total = sold_today
-        print(f"{available_items} are available")
-        restock_units = 0
-
-        flag = True
+        #print("Non-restock day")
+        #print(f"{sold_today} were sold today")
+        available_items_2 = available_items[0] - sold_today
+        #items_left = available_items - sold_today
+        #print(f"{available_items} are available")
+        restock_amount = 0
 
     else:
+        #Non-sale day so sold is 0
         sold_today = 0
-        restock_units = available_items
-
-    print(restock_units)
-
+        #Set restock variable
+        restock_amount = available_items[1]
+        #If statement to stop available_units being 4000 for first day
+        if current_day != 0:
+            available_items_2 = available_items[0] + restock_amount
+        else:
+            available_items_2 = 2000
+    #Creation of list for each day
     my_list = []
+    #Add each data item into list in correct order
     my_list.append(current_day)
     my_list.append(sold_today)
-    my_list.append(restock_units)
-    my_list.append(available_items)
-
+    my_list.append(restock_amount)
+    my_list.append(available_items_2)
+    #Add day list into whole inventory_records list
     inventory_records.append(my_list)
-    print(inventory_records)
+    #Set available_items back to a variable for start of next day
+    available_items = available_items_2
     return available_items
