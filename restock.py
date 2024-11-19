@@ -17,20 +17,17 @@ available_items:(integer) This function returns this integer which updates the a
 
 The function will also update the inventory_records (For restocking) for a  given current day. It will also return "available_items".
     '''
-    #inventory_records.clear()
 
-    #If statemen tto check if a restock is needed
+    #If statement to check if a restock is needed
     if current_day % 7 == 0:
         #restock_amount between 2000 and items left
         restock_amount = 2000 - available_items
+        #If the difference is zero then it means the stock is empty so sohlud refill fully by 2000
         if restock_amount == 0:
             restock_amount = 2000
-
-        #Restock amount
-        available_items = restock_amount
+    #If not restock day then restock is 0
     else:
         restock_amount = 0
-        available_items = restock_amount
-
-
+    #Set available_items as a list to be used in sales function to append restock and available_items in correct order in the list
+    available_items = [available_items, restock_amount]
     return available_items
