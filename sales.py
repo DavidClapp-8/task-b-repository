@@ -26,8 +26,7 @@ The function will also update the inventory_records (For restocking) for a  give
         available_items_2 = available_items[0] - sold_today
         #items_left = available_items - sold_today
         #print(f"{available_items} are available")
-        restock_amount = 0
-
+        restock_amount = available_items[1]
     else:
         #Non-sale day so sold is 0
         sold_today = 0
